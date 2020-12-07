@@ -1,8 +1,7 @@
 clc; clear all; close all;
-
 %% Características de las señales
 x = importdata('grupo1B.mat');
-%x = importdata('grupo1B.mat');
+
 V = var(x);  S = std(x); Nsamples = length(x); U = mean(x);
 
 %% PERIODOGRAMA
