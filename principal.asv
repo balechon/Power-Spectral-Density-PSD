@@ -1,6 +1,6 @@
 clc; clear all; close all;
 %Power spectral density 
-% based on the book "Statistical Digital Signal Processing and Modeling of M.H. Hayes"
+% based on the book "Statistical Digital Signal Processing and Modeling of"
 %% input signal characteristics
 x = importdata('datos1.mat');
 V = var(x);  
@@ -54,6 +54,7 @@ periodogram(x,kaiser(length(x),B));
 %% BARLETT
 nsec = 1;
 Px = bartlett_se(x,nsec);
+%Px = Px(1:(length(Px)/2));
 figure
 w = (0:length(Px)-1)/(length(Px)-1); 
 plot(w,10*log10(Px))
@@ -64,6 +65,7 @@ ylabel('Power')
 
 nsec = 3;
 Px = bartlett_se(x,nsec);
+%Px = Px(1:(length(Px)/2));
 figure
 w = (0:length(Px)-1)/(length(Px)-1); 
 plot(w,10*log10(Px))
@@ -74,6 +76,7 @@ ylabel('Power')
 
 nsec = 7;
 Px = bartlett_se(x,nsec);
+%Px = Px(1:(length(Px)/2));
 figure
 w = (0:length(Px)-1)/(length(Px)-1); 
 plot(w,10*log10(Px))
@@ -83,10 +86,11 @@ xlabel('Normalized Frequency');
 ylabel('Power')
 
 %% WELCH - HANNING 
-win = 3; L = 30;
-
+win = 3; 
+L = 30;
 over = 0.5;
 Px = welch_se(x,L,over,win);
+
 figure
 w = (0:length(Px)-1)/(length(Px)-1); 
 plot(w,10*log10(Px))
@@ -97,6 +101,7 @@ ylabel('Power');
 
 over = 0.9;
 Px = welch_se(x,L,over,win);
+%Px = Px(1:(length(Px)/2));
 figure
 w = (0:length(Px)-1)/(length(Px)-1); 
 plot(w,10*log10(Px))
@@ -106,9 +111,10 @@ xlabel('Normalized Frequency');
 ylabel('Power');
 
 %% WELCH - KAISER B = 0.5
-win = 6; B = 0.5; L = 20;
-
+win = 6; B = 0.5; % KAISER
+L = 20;
 over = 0.5;
+
 Px = welch_se(x,L,over,win,B);
 figure
 w = (0:length(Px)-1)/(length(Px)-1); 
@@ -121,6 +127,7 @@ ylabel('Power');
 
 over = 0.9;
 Px = welch_se(x,L,over,win,B);
+
 figure
 w = (0:length(Px)-1)/(length(Px)-1);
 plot(w,10*log10(Px))
@@ -146,6 +153,7 @@ ylabel('Power');
 M = 20;
 win = 3;
 Px = blackman_tukey(x,win,M);
+%Px = Px(1:(length(Px)/2));
 figure
 w = (0:length(Px)-1)/(length(Px)-1); 
 plot(w,10*log10(Px))
@@ -155,11 +163,11 @@ xlabel('Normalized Frequency');
 ylabel('Power');
 
 %% BLACKMAN_TUKEY - KAISER 
+M = fix(length (x)/5);
 B = 0.5;
 win = 6;
-
-M = fix(length (x)/5);
 Px = blackman_tukey(x,win,M,B);
+%Px = Px(1:(length(Px)/2));
 figure
 w = (0:length(Px)-1)/(length(Px)-1); 
 plot(w,10*log10(Px))
@@ -170,6 +178,7 @@ ylabel('Power');
 
 M = 20;
 Px = blackman_tukey(x,win,M,B);
+%Px = Px(1:(length(Px)/2));
 figure
 w = (0:length(Px)-1)/(length(Px)-1); 
 plot(w,10*log10(Px))

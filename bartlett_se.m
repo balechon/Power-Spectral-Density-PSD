@@ -1,4 +1,9 @@
 function Px = bartlett_se(x,nsect)
+   %---------------------------------------------------------------
+    % copyright 1996, by M.H. Hayes.  For use with the book 
+    % "Statistical Digital Signal Processing and Modeling"
+    % (John Wiley & Sons, 1996).
+    %---------------------------------------------------------------
     L = floor(length(x)/nsect);
     Px = 0;
     n1 = 1;

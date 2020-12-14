@@ -1,4 +1,9 @@
 function Px = blackman_tukey(x,win,M,B,n1,n2)
+    %---------------------------------------------------------------
+    % copyright 1996, by M.H. Hayes.  For use with the book 
+    % "Statistical Digital Signal Processing and Modeling"
+    % (John Wiley & Sons, 1996).
+    %---------------------------------------------------------------
     x = x(:);
     if nargin < 5 
         n1 = 1; n2 = length(x); 
@@ -21,4 +26,5 @@ function Px = blackman_tukey(x,win,M,B,n1,n2)
     r=r'.*w;
     Px = abs(fft(r,1024));
     Px(1)=Px(2);
+    Px = Px(1:(length(Px)/2));
 end
