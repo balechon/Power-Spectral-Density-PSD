@@ -1,6 +1,6 @@
 clc; clear all; close all;
 %% Características de las señales
-x = importdata('grupo1B.mat');
+x = importdata('datos1.mat');
 
 V = var(x);  S = std(x); Nsamples = length(x); U = mean(x);
 
