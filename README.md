@@ -12,6 +12,7 @@
 - Barlet
 - Blackman-Tuckey 
 - Welch  
+
 ademas se utilizo las ventanas de Hanning y Kaiser.
 
 ## Uso
