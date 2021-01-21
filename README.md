@@ -4,6 +4,7 @@
 **Colaboradores**
 - Nicolas Cobo
 - Brayan Lechon
+- Btyan pilco
 
 ## Descripción
 **Metodos de Estimacion Utilizados:** se ha empleado unicamente  metodos no parametricos,
